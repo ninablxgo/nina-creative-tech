@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>About — Nina Blagojevic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+@font-face {
+  font-family: 'Velvelyne';
+  src: url('assets/fonts/Velvelyne-Bold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+body{
+  background:#0e0e0e;
+  color:#eaeaea;
+  font-family:'Inter', sans-serif;
+  max-width:1000px;
+  margin:auto;
+  padding:60px 40px;
+  line-height:1.7;
+}
+
+/* TITLE */
+
+h1{
+  font-family:'Velvelyne', serif;
+  font-size:42px;
+  margin-bottom:50px;
+  background:linear-gradient(90deg,#ff69b4,#6c63ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* LAYOUT */
+
+.about-container{
+  display:flex;
+  gap:70px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+
+/* PHOTO */
+
+.about-image{
+  flex:0 0 350px;
+  position:relative;
+}
+
+
+
+.about-image img{
+  width:100%;
+  border-radius:14px;
+}
+
+/* TEXT */
+
+.about-text{
+  flex:1;
+  min-width:300px;
+  border-left:2px solid rgba(255,105,180,0.3);
+  padding-left:30px;
+}
+
+.about-text p{
+  margin-bottom:24px;
+}
+
+/* SIGNATURE */
+
+.signature{
+  margin-top:40px;
+  opacity:0.7;
+  font-size:0.9rem;
+}
+
+/* AREAS OF PRACTICE */
+
+.skills{
+  margin-top:80px;
+}
+
+.skills h2{
+  font-weight:500;
+  margin-bottom:30px;
+  opacity:0.9;
+}
+
+.areas{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:25px;
+}
+
+.area{
+  padding:22px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  font-size:0.95rem;
+  transition:all 0.3s ease;
+}
+
+.area:hover{
+  background:rgba(255,105,180,0.05);
+  border-color:rgba(255,105,180,0.4);
+  transform:translateY(-3px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width:800px){
+
+  .about-container{
+    flex-direction:column;
+  }
+
+  .about-image{
+    width:100%;
+  }
+
+  .about-text{
+    border-left:none;
+    padding-left:0;
+  }
+
+  .areas{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>About</h1>
+
+<div class="about-container">
+
+  <div class="about-image">
+    <img src="assets/moi.jpg" alt="Nina Blagojevic">
+  </div>
+
+  <div class="about-text">
+
+    <p>
+    After four years in art and design school, I gradually shifted toward emerging technologies to expand the spatial and temporal dimensions of my work.
+    My Master’s allowed me to experiment with real-time systems and interactive structures, while my professional experiences exposed me to the collaborative and technical frameworks required to produce immersive installations.
+    I am now focused on designing environments that are not fixed forms, but evolving situations.
+    </p>
+
+    <p>
+    My practice moves between software, hardware and network-based systems, depending on the logic and scale of each installation.
+    I am particularly interested in how individual actions can shape collective spatial experiences.
+    </p>
+
+    <div class="signature">
+      Nina Blagojevic — Creative Technologist
+    </div>
+
+  </div>
+
+</div>
+
+<div class="skills">
+
+  <h2>Areas of Practice</h2>
+
+  <div class="areas">
+    <div class="area">Real-time visual systems</div>
+    <div class="area">Interactive installation prototyping</div>
+    <div class="area">Hardware-based feedback structures</div>
+    <div class="area">Networked audience interaction</div>
+    <div class="area">Spatial scenography & projection</div>
+    <div class="area">Generative audiovisual logic</div>
+  </div>
+
+</div>
+
+</body>
+</html>

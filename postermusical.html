@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Visual Behaviours as Musical Structures — Nina Blagojevic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* 🔤 TYPO */
+@font-face {
+  font-family: 'Velvelyne';
+  src: url('assets/fonts/Velvelyne-Bold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+body{
+  background:#0e0e0e;
+  color:#eaeaea;
+  font-family:'Inter', sans-serif;
+  max-width:720px;
+  margin:auto;
+  padding:40px;
+  line-height:1.7;
+}
+
+/* TITRES */
+h1{
+  font-family:'Velvelyne', serif;
+  font-size:34px;
+  margin-bottom:5px;
+}
+
+h2{
+  font-weight:500;
+  margin-top:70px;
+}
+
+.subtitle{
+  color:#ffb56f;
+}
+
+.section{
+  margin-top:40px;
+}
+
+.intro-text{
+  margin-top:60px;
+}
+
+/* VIDEO BLOCKS */
+.video-block{
+  margin-top:60px;
+}
+
+video{
+  width:100%;
+  border-radius:8px;
+  margin-top:20px;
+}
+
+/* TEXT STYLE */
+.logic-text{
+  opacity:0.85;
+  margin-top:10px;
+}
+
+.divider{
+  border: none;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: 80px 0 60px 0;
+}
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius:12px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Visual Behaviours as Musical Structures</h1>
+<p class="subtitle">Generative geometry as musical structure</p>
+
+<div class="section intro-text">
+<p>
+This research explores how spatial behaviours can generate musical structures in real time.
+A series of visual systems developed in TouchDesigner translate proximity, collision, density and synchronisation into MIDI events driving Ableton Live.
+Rather than composing fixed sequences, the visual logic itself becomes the instrument.
+</p>
+</div>
+
+<!-- 01 -->
+<div class="video-block">
+<h2>01 — Proximity Behaviour</h2>
+
+<div class="video-wrapper">
+  <iframe 
+    src="https://player.vimeo.com/video/1168710024"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<p class="logic-text">
+Two circles generate independent MIDI channels.  
+When proximity decreases, their volume is attenuated, shifting attention toward other musical elements and creating dynamic filtering through spatial behaviour.
+</p>
+</div>
+
+<!-- 02 -->
+<div class="video-block">
+<h2>02 — Collision Trigger</h2>
+
+<div class="video-wrapper">
+  <iframe 
+    src="https://player.vimeo.com/video/1168710192"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<p class="logic-text">
+Pairs of circles trigger notes when intersecting.  
+Each interaction becomes an event-based musical gesture rather than a continuous stream.
+</p>
+</div>
+
+<!-- 03 -->
+<div class="video-block">
+<h2>03 — Density Mapping</h2>
+
+<div class="video-wrapper">
+  <iframe 
+    src="https://player.vimeo.com/video/1168710330"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<p class="logic-text">
+A moving circle navigates through a resampled point pattern.  
+As density increases, the number of MIDI events grows, generating evolving rhythmic structures.
+</p>
+</div>
+
+<!-- 04 -->
+<div class="video-block">
+<h2>04 — Synchronisation / Unison</h2>
+
+<div class="video-wrapper">
+  <iframe 
+    src="https://player.vimeo.com/video/1168710487"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<p class="logic-text">
+When multiple circles return simultaneously to their origin state, a shared MIDI event is triggered, creating a moment of synchronised musical unison.
+</p>
+</div>
+
+
+<hr class="divider">
+
+
+<p>
+This experiment emerged from a desire to construct a form of “productive disorder”, a system where spatial instability could generate musical structure.
+Instead of translating sound into image, the logic was reversed: visual relationships became compositional triggers, allowing geometry to shape rhythm and harmony.
+
+The project suggests a possible expansion toward a spatial installation in which bodies themselves act as moving nodes. Through proximity and intersection, participants could collectively generate a living composition : a melody shaped not by intention, but by encounter.</p>
+
+
+
+
+</body>
+</html>

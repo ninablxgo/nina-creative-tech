@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Biometric Aura System — Nina Blagojevic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+@font-face {
+  font-family: 'Velvelyne';
+  src: url('assets/fonts/Velvelyne-Bold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+body{
+  background:#0e0e0e;
+  color:#eaeaea;
+  font-family:'Inter', sans-serif;
+  max-width:900px;
+  margin:auto;
+  padding:40px;
+  line-height:1.7;
+}
+
+h1{
+  font-family:'Velvelyne', serif;
+  font-size:34px;
+  margin-bottom:5px;
+}
+
+h2{
+  margin-top:60px;
+  font-weight:500;
+}
+
+.section{ margin-top:40px; }
+
+/* HERO IMAGE */
+.hero img{
+  width:100%;
+  border-radius:8px;
+}
+
+/* INTRO */
+.intro-text{
+  margin-top:30px;
+}
+
+/* MEDIA ROW */
+
+.media-row video{
+  width:320px;
+  height:420px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.media-text{
+  flex:1;
+  min-width:260px;
+}
+
+/* DIAGRAM IMAGE */
+.diagram{
+  text-align:center;
+}
+
+.diagram img{
+  width:70%;        /* ← taille du schéma */
+  max-width:640px;
+  border-radius:8px;
+}
+
+.diagram .caption{
+  max-width:640px;
+  margin:10px auto 0 auto;
+  text-align:left;
+}
+
+/* TECH SCREENSHOTS */
+.tech-row{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.tech-row img{
+  width:260px;
+  border-radius:8px;
+}
+
+.tech-grid{
+  display:flex;
+  gap:40px;
+  align-items:flex-start;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+
+.tech-item{
+  flex:1;
+  min-width:250px;
+}
+
+.tech-item img{
+  width:100%;
+  border-radius:8px;
+}
+
+.tech-item .caption{
+  margin-top:15px;
+  font-size:0.85rem;
+  opacity:0.6;
+  font-style:italic;
+}
+
+.caption{
+  font-size:0.9rem;
+  opacity:0.6;
+  margin-top:12px;
+  margin-bottom:40px;   /* espace supplémentaire */
+  text-align:left;
+  font-style:italic;    /* italique */
+}
+
+/* CONCLUSION */
+.conclusion{
+  margin-top:50px;
+  padding-top:20px;
+  border-top:1px solid #1a1a1a;
+  opacity:0.9;
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s ease;
+}
+
+.lightbox.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.lightbox img{
+  max-width:90vw;
+  max-height:90vh;
+  object-fit:contain;
+}
+
+.zoomable{ cursor:pointer; }
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius:12px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Biometric Aura System — Spatial Prototype</h1>
+<p style="color:#ff6996;">Distributed biometric identity architecture</p>
+
+<p class="intro-text">
+This project began as a research-driven proposal for an immersive installation exploring the relationship between individuality and collective presence.
+Originally conceived in a world exposition context, the system aimed to create a living cartography shaped by visitors’ movements and biometric rhythms.
+Rather than presenting a fixed narrative, each participant generated a persistent aura derived from motion and BPM data, allowing individual traces to accumulate into a collective memory evolving over time.
+</p>
+
+<!-- HERO PLAN -->
+<div class="section hero">
+  <img class="zoomable" src="assets/osaka_layout.jpg">
+</div>
+
+
+<div class="caption">
+Developed as research prototype for Expo 2025 Osaka
+</div>
+
+<p>
+The initial system relied on several Kinect stations capturing silhouettes and transmitting BPM values to a central computer via OSC,
+allowing visitor data to be aggregated and reused across connected spaces.
+</p>
+
+<h2>Distributed BPM R&D</h2>
+
+<p>
+To enable continuity between spaces, a distributed architecture was developed using three computers handling five Kinect sensors.
+Each station processed silhouettes locally and transmitted lightweight BPM values via OSC to a central TouchDesigner system.
+Instead of sending heavy sensor streams across the network, only numeric biometric data was aggregated, logged and prepared for reuse.
+</p>
+
+<!-- 🔥 SCHEMA BPM -->
+<div class="section diagram">
+  <img class="zoomable" src="assets/schema_bpm.png">
+  <div class="caption">
+  Distributed OSC architecture connecting multiple Kinect stations to a central data receiver.
+  </div>
+</div>
+
+<!-- 🔥 TECH SCREENSHOTS -->
+<div class="tech-grid">
+
+  <div class="tech-item">
+    <img src="assets/bpm_sender.png" class="zoomable">
+    <div class="caption">
+      Station-side OSC sender transmitting BPM values with station and Kinect IDs.
+    </div>
+  </div>
+
+  <div class="tech-item">
+    <img src="assets/bpm_sender2.png" class="zoomable">
+    <div class="caption">
+      Debug console confirming BPM transmission and station identification.
+    </div>
+  </div>
+
+  <div class="tech-item">
+    <img src="assets/bpm_receiver.png" class="zoomable">
+    <div class="caption">
+      Central receiver logging incoming biometric data into a shared JSON structure.
+    </div>
+  </div>
+
+</div>
+
+<!-- AURA VIDEO -->
+<!-- AURA GENERATION LOGIC -->
+<div class="section">
+
+  <h2>Aura Generation Logic</h2>
+
+  <p>
+  During development, the architecture evolved toward a more focused interaction.
+  Instead of multiple capture points, a single Kinect and screen were used to assign a persistent colour aura to each participant.
+  </p>
+
+  <p>
+  When a visitor enters the first experience, their BPM triggers the selection of an RGB colour from a predefined palette.
+  This colour is stored alongside biometric data and becomes a persistent visual identity reused in the second space,
+  where generative visuals respond to the most recently registered participant.
+  </p>
+
+</div>
+
+<!-- VIDEO BETWEEN SECTIONS -->
+<div class="section">
+  <div class="video-wrapper">
+    <iframe 
+      src="https://player.vimeo.com/video/1168716041"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+
+<!-- SYSTEM ARCHITECTURE -->
+<div class="section">
+<h2>System Architecture</h2>
+
+<p>
+Multiple Kinect stations processed silhouettes locally and transmitted BPM values via OSC to a central TouchDesigner instance.
+Instead of streaming heavy sensor data, only lightweight numeric signals were aggregated and stored in a shared JSON structure,
+allowing scalable deployment while maintaining real-time responsiveness.
+</p>
+</div>
+
+<!-- 🔥 CONCLUSION -->
+<div class="section conclusion">
+
+<p>
+Although the initial system explored a complex distributed setup, the final installation shifted toward a reduced architecture
+focused on continuity of experience rather than technical scale.
+This transition reflects an important aspect of creative technology practice: balancing conceptual ambition with spatial constraints,
+production realities and audience flow. The resulting system preserved the core research goal - transforming biometric input into
+a persistent visual identity - while remaining robust in a live exhibition environment.
+</p>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".zoomable").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    lightbox.classList.add("active");
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener("click", ()=>{
+  lightbox.classList.remove("active");
+});
+</script>
+
+</body>
+</html>

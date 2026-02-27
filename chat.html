@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Realtime Participatory Interface — Nina Blagojevic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* 🔤 TYPO */
+@font-face {
+  font-family: 'Velvelyne';
+  src: url('assets/fonts/Velvelyne-Bold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+body{
+  background:#0e0e0e;
+  color:#eaeaea;
+  font-family:'Inter', sans-serif;
+  max-width:900px;
+  margin:auto;
+  padding:40px;
+  line-height:1.7;
+}
+
+/* TITRES */
+h1{
+  font-family:'Velvelyne', serif;
+  font-size:34px;
+  letter-spacing:0.6px;
+  margin-bottom:5px;
+  line-height:1.1;
+}
+
+h2{
+  font-weight:500;
+  margin-top:60px;
+}
+
+/* 🔥 SOUS TITRE ROSE */
+.subtitle{
+  color:#ff6ff8;
+}
+
+.section{ margin-top:40px; }
+
+.intro-text{
+  margin-top:70px;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* MEDIA */
+img, video{
+  width:100%;
+  margin-top:15px;
+  border-radius:8px;
+}
+
+/* HERO */
+.hero-images{
+  display:flex;
+  gap:20px;
+}
+
+.hero-images img{
+  width:50%;
+  max-height:520px;
+  object-fit:cover;
+}
+
+/* VIDEOS */
+.video-row{
+  display:flex;
+  gap:20px;
+}
+
+.video-row video{
+  width:50%;
+}
+
+/* DIAGRAM */
+.diagram{
+  background:#141414;
+  padding:20px;
+  border-radius:8px;
+  margin-top:20px;
+}
+
+/* 🔥 DEVELOPMENT MATERIAL */
+.dev-row{
+  display:flex;
+  gap:40px;
+  align-items:flex-start;
+}
+
+.dev-item{
+  flex:1;
+}
+
+/* 👇 IMPORTANT : resize propre du clubchat */
+.dev-item.ui img{
+  max-width:340px;
+}
+
+/* captions */
+.caption{
+  font-size:0.9rem;
+  opacity:0.7;
+  margin-top:8px;
+}
+
+/* IMAGE FINALE */
+.center-image{
+  display:flex;
+  justify-content:center;
+}
+
+.center-image img{
+  max-width:500px;
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0);
+  backdrop-filter:blur(0px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s ease, backdrop-filter 0.35s ease;
+  z-index:999;
+}
+
+.lightbox.active{
+  opacity:1;
+  pointer-events:auto;
+  backdrop-filter:blur(6px);
+  background:rgba(0,0,0,0.85);
+}
+
+.lightbox img{
+  width:auto;
+  height:auto;
+  max-width:90vw;
+  max-height:90vh;
+  object-fit:contain;
+  transform:scale(0.95);
+  transition:transform 0.35s ease;
+}
+
+.lightbox.active img{
+  transform:scale(1);
+}
+
+.zoomable{
+  cursor:pointer;
+}
+
+.italic-note{
+  font-style: italic;
+  opacity:0.85;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Realtime Participatory Interface — WebSocket Prototype</h1>
+<p class="subtitle">Realtime participatory interface & networked visual feedback</p>
+
+<!-- INTRO -->
+<div class="section intro-text">
+<p>
+For this project, I collaborated with the queer music collective <b>Club Reverie</b> to develop an immersive projection environment for the clubbing space of La Communale, Saint-Ouen.
+Using MadMapper, Resolume and TouchDesigner, we designed a live visual system combining projection mapping and real-time audience interaction.
+One of the main challenges was balancing two parallel needs: creating a stable, responsive chat interface mapped directly into the performance space - with live reset capabilities - while simultaneously producing continuous generative visuals throughout the event.
+</p>
+</div>
+
+<!-- HERO -->
+<div class="section hero-images">
+  <img class="zoomable" src="assets/22_Club_Reverie.jpg">
+  <img class="zoomable" src="assets/23_Club_Reverie.jpg">
+</div>
+
+<p class="italic-note">
+Immersive 360° projection environment developed for Club Reverie, a queer music collective.<br>
+La Communale, Saint-Ouen (FR) — September 2025.
+</p>
+
+<!-- TEXTE -->
+<div class="section">
+<p>
+This project explores lightweight real-time interaction between a mobile audience interface and a generative visual system.
+A custom web client connects directly to a public WebSocket chat server, enabling participants to send live inputs without relying on a dedicated backend infrastructure.
+Audience messages are transmitted as structured JSON data and parsed in TouchDesigner to drive visual behaviours during live performance.
+</p>
+</div>
+
+<!-- VIDEOS -->
+<div class="section video-row">
+  <video src="assets/chat_demo_touch.mp4" controls></video>
+  <video src="assets/chat_demo_tel.mp4" controls></video>
+</div>
+
+<!-- SYSTEM -->
+<div class="section">
+<h2>System Architecture</h2>
+<div class="diagram">
+Audience → Web Interface → hack.chat → TouchDesigner → Projection
+</div>
+</div>
+
+<!-- TECH -->
+<div class="section">
+<h2>Technical Structure</h2>
+<p>
+The system was designed as a lightweight real-time architecture enabling audience participation without requiring a dedicated backend.
+A custom web interface acts as a WebSocket client, joining a shared chat channel where messages are transmitted as structured JSON data.
+Inside TouchDesigner, incoming data is parsed and mapped to visual parameters, allowing live modulation of the projection environment.
+Special attention was given to connection stability, nickname sanitization and UX simplicity to ensure reliable public interaction during performance conditions.
+</p>
+</div>
+
+<!-- DEVELOPMENT -->
+<div class="section">
+<h2>Development Material</h2>
+
+<div class="dev-row">
+
+  <div class="dev-item ui">
+    <img class="zoomable" src="assets/interface_ui.png">
+    <div class="caption">
+      Custom mobile interface adapted from hack.chat and redesigned in HTML for live audience interaction.
+    </div>
+  </div>
+
+  <div class="dev-item">
+    <img class="zoomable" src="assets/touchdesigner_setup.png">
+    <div class="caption">
+      Live chat stream received and parsed inside TouchDesigner to drive visual style and projection behaviour.
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- IMAGE FINALE -->
+<div class="section center-image">
+  <img class="zoomable" src="assets/26_Club_Reverie.jpg">
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".zoomable").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    lightbox.classList.add("active");
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener("click", ()=>{
+  lightbox.classList.remove("active");
+});
+</script>
+
+</body>
+</html>

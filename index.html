@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nina Blagojevic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+
+
+body{
+  margin:0;
+  background:linear-gradient(-45deg, #0e0e0e, #2a0f3f, #0f163f, #1a0033);
+  background-size:500% 500%;
+  animation:gradientMove 25s ease infinite;
+  color:#eaeaea;
+  font-family:'Inter', sans-serif;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:100px 40px;
+}
+
+/* TITLE */
+
+h1{
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  opacity:0.6;
+  margin-bottom:40px;
+}
+
+/* SCROLLING TEXT */
+
+.marquee-wrapper{
+  overflow:hidden;
+  white-space:nowrap;
+  border-top:1px solid rgba(255,255,255,0.08);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:14px 0;
+  margin-bottom:80px;
+}
+
+.marquee{
+  display:inline-block;
+  padding-left:100%;
+  animation:scrollText 18s linear infinite;
+  font-size:0.95rem;
+  opacity:0.6;
+}
+
+@keyframes scrollText{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-100%);}
+}
+
+/* PROJECT GRID */
+
+.projects{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:40px;
+}
+
+.project{
+  padding:30px;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  transition:all 0.3s ease;
+  text-decoration:none;
+  color:inherit;
+  background:rgba(255,255,255,0.02);
+}
+
+.project:hover{
+  border-color:rgba(255,105,180,0.6);
+  transform:translateY(-4px);
+  background:rgba(255,105,180,0.05);
+}
+
+.project-title{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.project-sub{
+  font-size:0.9rem;
+  opacity:0.6;
+}
+
+/* ABOUT LINK */
+
+.footer{
+  margin-top:80px;
+}
+
+.about-link{
+  font-size:1.1rem;
+  letter-spacing:0.5px;
+  text-decoration:none;
+  color:inherit;
+  transition:all 0.3s ease;
+}
+
+.about-link:hover{
+  opacity:0.8;
+  letter-spacing:1px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:800px){
+  .projects{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Nina Blagojevic</h1>
+<div class="subtitle">
+Interactive systems & spatial installations
+</div>
+
+<div class="marquee-wrapper">
+  <div class="marquee">
+    Welcome to my portfolio — Real-time systems • Spatial interaction • Biometric feedback • Networked environments • Generative audiovisual structures • 
+  </div>
+</div>
+
+<div class="projects">
+
+<a href="bpm_aura.html" class="project">
+  <div class="project-title">Biometric Aura System</div>
+  <div class="project-sub">Distributed biometric identity & spatial continuity</div>
+</a>
+
+<a href="animalmachine.html" class="project">
+  <div class="project-title">Animal-Machine</div>
+  <div class="project-sub">Embodied voice interface & hybrid spatial presence</div>
+</a>
+
+<a href="geekmachine.html" class="project">
+  <div class="project-title">Geek-Machine</div>
+  <div class="project-sub">Game data feedback loop & ecological response system</div>
+</a>
+
+<a href="chat.html" class="project">
+  <div class="project-title">Participatory Chat</div>
+  <div class="project-sub">Realtime audience interface & projection feedback</div>
+</a>
+
+<a href="postermusical.html" class="project">
+  <div class="project-title">Poster Musical</div>
+  <div class="project-sub">Visual-to-sound generative composition logic</div>
+</a>
+
+<a href="marbrerie.html" class="project">
+  <div class="project-title">Live Visual Processing</div>
+  <div class="project-sub">Stage scenography & temporal image fragmentation</div>
+</a>
+
+</div>
+
+<div class="footer">
+  <a href="about.html" class="about-link">About</a>
+</div>
+
+</div>
+
+</body>
+</html>

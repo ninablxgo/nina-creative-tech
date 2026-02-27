@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GeekMachine — Nina Blagojevic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+@font-face {
+  font-family: 'Velvelyne';
+  src: url('assets/fonts/Velvelyne-Bold.woff2') format('woff2');
+  font-weight:bold;
+}
+
+/* SIGNAL FLOW */
+.signal-flow{
+  margin-top:25px;
+  padding:18px 22px;
+  background:#141414;
+  border-radius:8px;
+  font-size:0.95rem;
+  letter-spacing:0.2px;
+  color:#dcdcdc;
+}
+
+body{
+  background:#0e0e0e;
+  color:#eaeaea;
+  font-family:'Inter', sans-serif;
+  max-width:900px;
+  margin:auto;
+  padding:40px;
+  line-height:1.7;
+}
+
+h1{
+  font-family:'Velvelyne', serif;
+  font-size:34px;
+  margin-bottom:5px;
+}
+
+h2{
+  margin-top:60px;
+  font-weight:500;
+}
+
+.section{ margin-top:40px; }
+
+/* HERO IMAGES */
+.hero{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.hero img{
+  width:calc(33.33% - 14px);
+  border-radius:8px;
+}
+
+/* MEDIA ROW */
+.media-row{
+  display:flex;
+  gap:50px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  position:relative;
+}
+
+.media-row iframe{
+  width:320px;
+  height:420px;
+  border-radius:8px;
+  border:none;
+}
+
+/* ligne verticale style studio */
+.media-row::before{
+  content:"";
+  position:absolute;
+  left:360px;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:#222;
+}
+
+.media-row video{
+  width:320px;
+  height:420px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.media-text{
+  flex:1;
+  min-width:260px;
+}
+
+/* captions */
+.caption{
+  font-size:0.9rem;
+  opacity:0.7;
+  margin-top:8px;
+}
+
+.caption-left{
+  font-size:0.9rem;
+  opacity:0.6;
+  margin-top:15px;
+  text-align:left;
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s ease;
+}
+
+.lightbox.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.lightbox img{
+  max-width:90vw;
+  max-height:90vh;
+  object-fit:contain;
+}
+
+.zoomable{ cursor:pointer; }
+
+</style>
+</head>
+
+<body>
+
+<h1>GeekMachine — Biometric Game Interface</h1>
+<p style="color:#69e1ff;">Game data to ecological feedback loop</p>
+
+<div class="section">
+
+<p>
+GeekMachine is a hybrid sculpture exploring the relationship between competitive online behaviour and ecological systems.
+The installation retrieves historical match data from the Riot Games API, looping through a player’s recent games to generate asynchronous interactions
+between past gameplay events and a living system.
+</p>
+
+</div>
+
+<!-- HERO IMAGES -->
+<div class="section hero">
+
+  <img class="zoomable" src="assets/geekmachine_1.jpg">
+  <img class="zoomable" src="assets/geekmachine_2.jpg">
+  <img class="zoomable" src="assets/geekmachine_3.jpg">
+
+</div>
+
+<div class="caption-left">
+<em>GeekMachine</em>, 3D printed sculpture with Raspberry Pi–driven API interaction and environmental feedback system, 2024
+</div>
+
+<div class="section">
+
+<h2>System Logic</h2>
+
+<div class="signal-flow">
+Riot API (match history) → Python Parser → Raspberry Pi GPIO → Pump / LED / Audio  
+<br>
+Moisture Sensor → Feedback Loop → Watering Override
+</div>
+
+<p>
+The system retrieves the latest <em>League of Legends</em> matches through the Riot Games API, looping through the twenty most recent games.
+Each gameplay event triggers specific physical responses:
+</p>
+
+<ul>
+<li>If a match is won, a water pump is activated to irrigate the plant.</li>
+<li>A soil moisture sensor prevents activation when the environment is already hydrated, introducing a biological constraint to the reward system.</li>
+<li>Enemy kills trigger a LED flash and a low growl sound played through speakers.</li>
+</ul>
+
+<p>
+This layered logic transforms competitive metrics into a fragile ecosystem where digital success does not always translate into physical action.
+</p>
+
+</div>
+
+<!-- VIDEO + TEXT -->
+<div class="section media-row">
+
+  <iframe 
+    src="https://player.vimeo.com/video/1168720098"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+  <div class="media-text">
+
+    <h2>Technical Implementation</h2>
+
+    <p>
+A Raspberry Pi runs a Python environment connecting to the Riot API while simultaneously controlling hardware outputs.
+Game events are parsed in real-time and mapped to GPIO triggers driving the pump relay, LED feedback and audio playback.
+</p>
+
+    <p>
+The moisture sensor introduces a feedback loop preventing overwatering, allowing the living system to resist purely algorithmic control.
+This constraint became a central conceptual element, shifting the sculpture away from direct automation toward negotiated interaction.
+</p>
+
+  </div>
+
+</div>
+
+<div class="section">
+
+<h2>Research Direction</h2>
+
+<p>
+GeekMachine investigates how data-driven systems can produce intimate relationships between players and non-human entities.
+By translating invisible gameplay metrics into tangible environmental consequences, the project questions the logic of optimisation embedded in digital culture.
+The sculpture becomes a mediator between performance, care and ecological balance.
+</p>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".zoomable").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    lightbox.classList.add("active");
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener("click", ()=>{
+  lightbox.classList.remove("active");
+});
+</script>
+
+</body>
+</html>

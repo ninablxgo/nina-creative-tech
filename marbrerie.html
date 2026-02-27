@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Live Visual Processing — Nina Blagojevic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+@font-face {
+  font-family: 'Velvelyne';
+  src: url('assets/fonts/Velvelyne-Bold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+body{
+  background:#0e0e0e;
+  color:#eaeaea;
+  font-family:'Inter', sans-serif;
+  max-width:900px;
+  margin:auto;
+  padding:40px;
+  line-height:1.7;
+}
+
+h1{
+  font-family:'Velvelyne', serif;
+  font-size:34px;
+  margin-bottom:5px;
+}
+
+h2{
+  margin-top:60px;
+  font-weight:500;
+}
+
+.section{
+  margin-top:60px;
+}
+
+/* HERO IMAGE */
+.hero img{
+  width:75%;
+  display:block;
+  margin:0 auto;
+  border-radius:8px;
+}
+
+/* PATCH IMAGES */
+.patch img{
+  width:100%;
+  border-radius:8px;
+  margin-top:20px;
+}
+
+/* STAGE GALLERY */
+.stage-gallery{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.stage-gallery img{
+  width:calc(50% - 10px);
+  border-radius:8px;
+}
+
+/* VIDEO */
+.video-block video{
+  width:100%;
+  border-radius:8px;
+  margin-top:20px;
+}
+
+/* CAPTION */
+.caption{
+  font-size:0.9rem;
+  opacity:0.6;
+  margin-top:12px;
+  text-align:left;
+}
+
+.caption-center{
+  font-size:0.9rem;
+  opacity:0.6;
+  margin-top:12px;
+  text-align:center;
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s ease;
+  z-index:999;
+}
+
+.lightbox.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.lightbox img{
+  max-width:90vw;
+  max-height:90vh;
+  object-fit:contain;
+}
+
+.zoomable{
+  cursor:pointer;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius:12px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Live Visual Processing — La Marbrerie</h1>
+<p style="color:#bc69ff;">Real-time camera transformation & performative scenography</p>
+
+<p>
+VJing became for me a space to experiment with scenographic potential in real time.
+Rather than projecting pre-rendered visuals, I work with the live presence of performers - capturing, fragmenting and re-structuring their image as they move.
+The stage turns into a responsive architecture where light, delay and symmetry amplify the performers’ energy instead of covering it.
+</p>
+
+<!-- HERO -->
+<div class="section hero">
+  <img src="assets/scene.jpg" class="zoomable">
+</div>
+
+<div class="caption-center">
+VJing / Live performance at La Marbrerie, Montreuil (FR) — Montvenus 2nd Birthday, February 2026
+</div>
+
+
+
+<!-- KALEIDOSCOPE -->
+<div class="section patch">
+
+<h2>Face-Tracked Symmetry System</h2>
+
+<p>
+A real-time face tracking system dynamically repositioned the centre of a kaleidoscopic transformation.
+The performer’s movement continuously redefined the symmetry axis, turning the body into a generative spatial structure.
+</p>
+
+<img src="assets/kaleidoscope_patch.png" class="zoomable">
+
+<div class="caption">
+Face-tracked kaleidoscopic transformation following performer movement in real time. 
+</div>
+
+</div>
+
+<!-- GRID -->
+<div class="section patch">
+
+<h2>Temporal Fragmentation Grid</h2>
+
+<p>
+The live camera feed was segmented into a grid structure combining multiple temporal layers.
+Three streams were composited:
+</p>
+
+<ul>
+<li>Live feed (present time)</li>
+<li>Cache A (-300 frames)</li>
+<li>Cache B (-600 frames)</li>
+</ul>
+
+<p>
+This produced spatialised time displacement, where different sections of the performer existed in distinct temporal states simultaneously.
+</p>
+
+<img src="assets/grid_patch.png" class="zoomable">
+
+<div class="caption">
+Multi-layer grid combining live feed and delayed cache operators to create temporal displacement.
+</div>
+
+</div>
+
+<!-- STAGE RESULT -->
+<div class="section">
+
+<h2>Stage Implementation</h2>
+
+<div class="stage-gallery">
+  <img src="assets/scene_2.png" class="zoomable">
+  <img src="assets/scene_3.png" class="zoomable">
+</div>
+
+<div class="caption">
+Real-time projection integrated into live DJ performance environment. DJ : ELOI
+</div>
+
+</div>
+
+<!-- VIDEO -->
+<div class="section video-block">
+
+<h2>Performance Highlights</h2>
+
+<div class="video-wrapper">
+  <iframe 
+    src="https://player.vimeo.com/video/1168713276"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".zoomable").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    lightbox.classList.add("active");
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener("click", ()=>{
+  lightbox.classList.remove("active");
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Animal-Machine — Nina Blagojevic</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+    
+
+@font-face {
+  font-family: 'Velvelyne';
+  src: url('assets/fonts/Velvelyne-Bold.woff2') format('woff2');
+  font-weight:bold;
+}
+
+body{
+  background:#0e0e0e;
+  color:#eaeaea;
+  font-family:'Inter', sans-serif;
+  max-width:900px;
+  margin:auto;
+  padding:40px;
+  line-height:1.7;
+}
+
+h1{
+  font-family:'Velvelyne', serif;
+  font-size:34px;
+  margin-bottom:5px;
+}
+
+h2{
+  margin-top:60px;
+  font-weight:500;
+}
+
+.section{ margin-top:40px; }
+
+/* HERO IMAGES */
+.hero{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.hero img{
+  width:calc(33.33% - 14px);
+  border-radius:8px;
+}
+
+/* SIGNAL FLOW */
+.signal-flow{
+  margin-top:25px;
+  padding:18px 22px;
+  background:#141414;
+  border-radius:8px;
+  font-size:0.95rem;
+  letter-spacing:0.2px;
+  color:#dcdcdc;
+}
+
+/* VIDEO */
+.video-wrapper{
+  margin-top:40px;
+}
+
+.video-wrapper video{
+  width:100%;
+  border-radius:8px;
+}
+
+/* CONCLUSION */
+.conclusion{
+  margin-top:50px;
+  padding-top:20px;
+  border-top:1px solid #1a1a1a;
+  opacity:0.9;
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s ease;
+  z-index:999;
+}
+
+.lightbox.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.lightbox img{
+  max-width:90vw;
+  max-height:90vh;
+  object-fit:contain;
+}
+
+.zoomable{
+  cursor:pointer;
+  transition:opacity 0.2s ease;
+}
+
+.zoomable:hover{
+  opacity:0.85;
+}
+
+.image-caption{
+  margin-top:14px;
+  font-size:0.9rem;
+  opacity:0.7;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius:12px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Animal-Machine — Embodied Hybrid Agent</h1>
+<p style="color:#fb86ff;">Embodied voiceinterface & hybrid machine presence</p>
+
+<div class="section">
+
+<p>
+Animal-Machine explores the construction of an embodied digital agent distributed between physical robotics and virtual simulation.
+The project consists of a 3D-printed autonomous creature mounted on wheels, paired with a Unity-based virtual counterpart sharing the same behavioural identity.
+Rather than functioning as a conventional robot, the system operates as a hybrid interface oscillating between material presence and software representation.
+</p>
+
+</div>
+
+<!-- IMAGES -->
+<div class="section hero">
+
+  <img class="zoomable" src="assets/animalmachine_1.jpg">
+  <img class="zoomable" src="assets/animalmachine_2.jpg">
+  <img class="zoomable" src="assets/animalmachine_3.jpg">
+
+</div>
+
+<div class="image-caption">
+  <em>Animal-Machine</em>, 3D print, Arduino, speech recognition system, 2023
+</div>
+
+<div class="section">
+
+<h2>System Logic</h2>
+
+<p>
+The physical body is controlled via Arduino and programmed to navigate space autonomously using an obstacle detection sensor.
+Its movement logic is intentionally non-deterministic, generating unpredictable behavioural patterns in space.
+Inside the body, a screen displays a Unity environment hosting a virtual version of the same entity.
+</p>
+
+<p>
+A predefined voice command system allows verbal interaction.
+When specific phrases are detected, scripted responses are triggered in Unity, producing the illusion of dialogue between human and machine.
+</p>
+
+<div class="signal-flow">
+Voice Input → Phrase Detection → Unity Dialogue System  
+<br><br>
+Arduino Movement Logic → Obstacle Sensor → Direction Adjustment  
+<br><br>
+Physical Body ↔ Virtual Agent Representation
+</div>
+
+</div>
+
+<!-- VIDEO -->
+<div class="section">
+
+<h2>Interaction Demonstration</h2>
+
+<div class="video-wrapper">
+  <iframe 
+    src="https://player.vimeo.com/video/830957572"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+</div>
+
+<div class="section conclusion">
+
+<p>
+Animal-Machine investigates the boundaries between artificial agency and performative illusion.
+By splitting identity across hardware mobility and scripted dialogue, the project examines how minimal rule-based systems can generate perceived intentionality.
+The machine does not understand language; it performs understanding.
+This ambiguity between response and cognition forms the conceptual core of the work.
+</p>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+document.querySelectorAll(".zoomable").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    lightbox.classList.add("active");
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener("click", ()=>{
+  lightbox.classList.remove("active");
+});
+</script>
+
+</body>
+</html>
